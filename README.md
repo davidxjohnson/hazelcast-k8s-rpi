@@ -36,7 +36,7 @@ kubectl create -f hazelcast-replicator.json # creates a replication controller a
 kubectl get all
 ```
 
-It may take a while for the pods to stand up as the Docker image is downloaded to each K8s compute cluster.
+It may take a while for the pods to stand up as the Docker image is downloaded to each K8s compute node.
 
 ```bash
 HypriotOS/armv7: pirate@rpi-white in ~/hazelcast-k8s-rpi on master
@@ -51,7 +51,6 @@ rc/hazelcast-node   3         3         3         18h
 
 NAME                    TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 svc/hazelcast-cluster   ClusterIP   None         <none>        5701/TCP   1d
-svc/kubernetes          ClusterIP   10.96.0.1    <none>        443/TCP    5d
 ```
 
 To verify that the Hazelcast cluster is formed, look at the logs for each pod:
@@ -69,3 +68,8 @@ Members [3] {
         Member [10.32.0.5]:5701 - 74ad2a5d-9aca-44c5-a6a4-c2ee14547465 this
         Member [10.38.0.5]:5701 - 6b1e2af2-5160-463a-9a5b-a130962f65d0
 ```
+
+## What's next:
+* Exposing the cluster IP external to K8s network.  Might have to use a HTTP tunnel to alow memcached or native protocol to the cluster.
+* Testing: Load, LRU eviction, scale up/down etc.
+* Backing store, perhaps Cassandra.
