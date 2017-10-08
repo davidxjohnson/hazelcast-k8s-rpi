@@ -1,0 +1,61 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  creationTimestamp: 2017-10-08T02:23:16Z
+  generation: 2
+  labels:
+    name: hazelcast-node
+  name: hazelcast-node
+  namespace: default
+  resourceVersion: "515729"
+  selfLink: /api/v1/namespaces/default/replicationcontrollers/hazelcast-node
+  uid: a47874bd-abcf-11e7-b7d9-b827eb292084
+spec:
+  replicas: 3
+  selector:
+    name: hazelcast-node
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: hazelcast-node
+      name: hazelcast-node
+    spec:
+      containers:
+      - env:
+        - name: HAZELCAST_KUBERNETES_SERVICE_DNS
+          value: hazelcast-cluster.default.svc.cluster.local
+        - name: HAZELCAST_KUBERNETES_SERVICE_NAME
+          value: hazelcast-cluster
+        - name: HAZELCAST_KUBERNETES_NAMESPACE
+          value: default
+        - name: HAZELCAST_KUBERNETES_SERVICE_DNS_IP_TYPE
+          value: IPV4
+        - name: MIN_HEAP_SIZE
+          value: 128m
+	- name: MAX_HEAP_SIZE
+          value: 256m
+        image: dxjohnson/hazelcast-k8s-rpi
+        imagePullPolicy: Always
+        name: hazelcast-openshift
+        ports:
+        - containerPort: 5701
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  fullyLabeledReplicas: 3
+  observedGeneration: 2
+  readyReplicas: 3
+  replicas: 3
