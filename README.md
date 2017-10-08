@@ -8,12 +8,12 @@ This work was derived from the [hazelcast-openshift-origin](https://github.com/h
 * The resource definitions specific to K8s are provided. There are subtle (and sometimes not so subtle) difference in how resources are defined in OpenShift vs. K8s.
 * Basic instructions are provided to setup a Hazelcast cluster K8s.
 
-** Out of Scope:**
+**Out of Scope:**
 
 * If you don't want to use the K8s discovery module, it can be removed from the hazelcast.xml configuration file and the container rebuilt using the Dockerfile.
 * This work does not cover the building of a Pi Cluster or installing and configuring the K8s cluster on the Pi. Perhaps at some future date I'll provide some links on how to do all of that.
 * SPI modules for Hazelcast. It's worth reading the [Hazelcast Blog](https://blog.hazelcast.com/openshift/) for details about its auto-discovery capability on Kubernetes/OpenShift. There are also  [discovery plug-ins](https://hazelcast.org/plugins/?type=cloud-discovery) for other platforms, or you could [write your own](https://blog.hazelcast.com/hazelcast-discovery-spi/).
-* K8s tools and configuration. You should consult the [K8s documentation](https://kubernetes.io/docs/home/) for additional details.
+* K8s tools and configuration. Consult the [K8s documentation](https://kubernetes.io/docs/home/) for additional details.
 
 
 ## Tested on:
@@ -21,8 +21,6 @@ This work was derived from the [hazelcast-openshift-origin](https://github.com/h
 * 4-node Raspberry Pi B "cluster" - 1.2Ghz 1GB
 * HypriotOS-v7+ armv7l GNU/Linux
 * Kubernetes v1.8.0+
-
-Please note that the [docker image](https://hub.docker.com/r/dxjohnson/hazelcast-k8s-rpi/) of this distribution is only compatible with OpenShift or K8s running on ARM7 hardware. The resource definitions are for Kubernetes and do not support many OpenShift Origin features.
 
 
 ## Usage
